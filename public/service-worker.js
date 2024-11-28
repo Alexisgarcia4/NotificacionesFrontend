@@ -20,12 +20,13 @@ self.addEventListener('push', (event) => {
 });
 
 self.addEventListener('notificationclick', (event) => {
-    event.notification.close(); // Cerrar la notificación
+    
 
     const link = event.notification.data?.link; // Obtener el enlace desde "data"
     if (link) {
         event.waitUntil(clients.openWindow(link)); // Abrir el enlace en una nueva ventana/pestaña
     }
+    event.notification.close(); // Cerrar la notificación
 });
 
 
